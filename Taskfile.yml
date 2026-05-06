@@ -1,0 +1,62 @@
+version: "3"
+
+set: [errexit, nounset, pipefail]
+
+tasks:
+  default:
+    desc: List all tasks
+    cmds:
+      - task --list
+    silent: true
+
+  fmt:
+    desc: Format code and docs
+    cmds:
+      - npm run fmt
+
+  fmt:check:
+    desc: Check code and docs formatting
+    cmds:
+      - npm run fmt:check
+
+  lint:
+    desc: Lint TypeScript sources and tests
+    cmds:
+      - npm run lint
+
+  typecheck:
+    desc: Type-check the project
+    cmds:
+      - npm run typecheck
+
+  test:
+    desc: Run the test suite
+    cmds:
+      - npm run test
+
+  test:coverage:
+    desc: Run tests with coverage enforcement
+    cmds:
+      - npm run test:coverage
+
+  py:test:
+    desc: Run Python tests for the AI workflow layer
+    cmds:
+      - python -m unittest discover -s python/tests
+
+  py:check:
+    desc: Check the Python workflow layer
+    deps: [py:test]
+    cmds:
+      - echo "python checks complete"
+
+  build:
+    desc: Build the package
+    cmds:
+      - npm run build
+
+  check:
+    desc: Run the full pre-commit gate
+    deps: [fmt:check, lint, typecheck, test:coverage, py:check]
+    cmds:
+      - echo "check complete"

@@ -1,0 +1,166 @@
+{
+  "vBRIEFInfo": {
+    "version": "0.5",
+    "description": "Initial vBRIEF draft for the AI Joke of the Day repo scaffold."
+  },
+  "plan": {
+    "title": "AI Joke of the Day SPECIFICATION",
+    "status": "draft",
+    "narratives": {
+      "Overview": "A web app that ingests daily news headlines, retrieves relevant context from Pinecone, generates jokes with LangChain and CrewAI, lets users vote, and emails the joke of the day through Zapier.",
+      "Architecture": "A TypeScript shell powers deterministic domain helpers while a Python workflow layer handles Pinecone retrieval, LangChain retrieval chains, CrewAI agents, SQLite persistence, a voting dashboard, and Zapier-based daily delivery."
+    },
+    "items": [
+      {
+        "id": "phase-1",
+        "title": "Phase 1: Foundation",
+        "status": "pending",
+        "subItems": [
+          {
+            "id": "1.1",
+            "title": "Subphase 1.1: Repository Setup",
+            "status": "completed",
+            "subItems": [
+              {
+                "id": "1.1.1",
+                "title": "Create TypeScript, lint, test, and task tooling",
+                "status": "completed",
+                "narrative": {
+                  "Acceptance": "task check, typecheck, lint, and tests are defined for the repo scaffold",
+                  "Traces": "NFR-2, NFR-7"
+                }
+              },
+              {
+                "id": "1.1.2",
+                "title": "Add repo documentation and project rules",
+                "status": "completed",
+                "narrative": {
+                  "Acceptance": "README.md, PROJECT.md, and SPECIFICATION.md describe the product and the MVP boundaries",
+                  "Traces": "FR-4, FR-10, NFR-4"
+                }
+              }
+            ]
+          },
+          {
+            "id": "1.2",
+            "title": "Subphase 1.2: Core Domain",
+            "status": "pending",
+            "subItems": [
+              {
+                "id": "1.2.1",
+                "title": "Implement headline normalization and deduplication helpers",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "Pure functions exist for normalizing and deduplicating headlines with tests",
+                  "Traces": "FR-1, FR-2, FR-5, NFR-5"
+                }
+              },
+              {
+                "id": "1.2.2",
+                "title": "Implement retrieval context assembly for RAG and LangChain prompt inputs",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "The project has pure helpers that prepare retrieval context for LangChain chains",
+                  "Traces": "FR-3, FR-4, NFR-6"
+                }
+              },
+              {
+                "id": "1.2.3",
+                "title": "Implement joke ranking and deterministic winner selection",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "Winner selection is deterministic for the same vote totals and timestamps",
+                  "Traces": "FR-9, NFR-5"
+                }
+              },
+              {
+                "id": "1.2.4",
+                "title": "Implement vote tally and digest helpers",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "Vote tally and daily digest helpers can be tested without external services",
+                  "Traces": "FR-7, FR-12, NFR-2"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "phase-2",
+        "title": "Phase 2: Product Workflow",
+        "status": "pending",
+        "subItems": [
+          {
+            "id": "2.1",
+            "title": "Subphase 2.1: Dashboard and Voting",
+            "status": "pending",
+            "subItems": [
+              {
+                "id": "2.1.1",
+                "title": "Build the dashboard view for jokes and votes",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "Users can review candidate jokes and vote through the dashboard",
+                  "Traces": "FR-8, NFR-3"
+                }
+              },
+              {
+                "id": "2.1.2",
+                "title": "Persist votes and leaderboard state",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "SQLite stores votes and supports deterministic ranking updates",
+                  "Traces": "FR-7, FR-9"
+                }
+              }
+            ]
+          },
+          {
+            "id": "2.2",
+            "title": "Subphase 2.2: Agentic Pipeline",
+            "status": "pending",
+            "subItems": [
+              {
+                "id": "2.2.1",
+                "title": "Add the daily headline fetch and LangChain RAG retrieval job",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "The system can run one daily content generation job from stored headlines and retrieval context",
+                  "Traces": "FR-1, FR-3, FR-4"
+                }
+              },
+              {
+                "id": "2.2.2",
+                "title": "Add the CrewAI joke generation and refinement job",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "The agent stack uses role-based CrewAI agents to generate and refine 10 jokes",
+                  "Traces": "FR-5, FR-6"
+                }
+              },
+              {
+                "id": "2.2.3",
+                "title": "Add the Zapier email dispatch job",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "The winning joke can be handed off to Zapier for daily delivery to a mailing list",
+                  "Traces": "FR-10, FR-11"
+                }
+              },
+              {
+                "id": "2.2.4",
+                "title": "Add Pinecone-backed retrieval persistence and query flow",
+                "status": "pending",
+                "narrative": {
+                  "Acceptance": "Headline retrieval uses Pinecone in the Starter-plan-safe AWS us-east-1 region",
+                  "Traces": "FR-13, NFR-6, NFR-8"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

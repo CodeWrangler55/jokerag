@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jokerag-agent"
+version = "0.1.0"
+description = "AI Joke of the Day workflow layer"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+ai = [
+  "langchain-core>=0.3",
+  "crewai>=0.100",
+  "pinecone>=5.0.0",
+]
+dev = []
+
+[tool.setuptools]
+package-dir = {"" = "python"}
+
+[tool.setuptools.packages.find]
+where = ["python"]
