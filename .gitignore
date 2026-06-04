@@ -1,0 +1,27 @@
+node_modules/
+dist/
+coverage/
+data/
+.pytest_cache/
+__pycache__/
+.venv/
+.agents/
+.deft/
+.deft-cache/
+deft/
+vbrief/
+chat.txt
+python/*.egg-info/
+.DS_Store
+.env
+.env.local
+.env.*
+!.env.example
+*.log
+install-windows-amd64 (1).exe
+
+# Migration backups (created by `task migrate:vbrief`) -- do NOT commit.
+# Post-commit, pre-migration state is recoverable via git history; see
+# deft/main.md § Safety flags for the post-commit recovery path.
+*.premigrate.md
+*.premigrate.vbrief.json
